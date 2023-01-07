@@ -1,4 +1,5 @@
 import Speakers from './components/Speakers'
+
 const IndexPage = () => {
   return (
     <Speakers/>
