@@ -4,10 +4,11 @@ import Header from './Header'
 import SpeakersToolbar from './SpeakersToolbar'
 
 export default function Speakers(){
+
     return(
     <div className="container-fluid">
       <Header />
-      <SpeakersToolbar/>
+      <SpeakersToolbar />
       <SpeakersList data={data}/>
     </div>
     )
