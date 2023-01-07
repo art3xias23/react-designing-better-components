@@ -10,16 +10,16 @@ export default function SpeakerInfo(props) {
         <p className="card-description">
           {props.bio}
         </p>
-        <p className="social d-flex flex-row mt-4">
-          <p className="company">
+        <div className="social d-flex flex-row mt-4">
+          <div className="company">
             <h5>Company</h5>
             <h6>{props.company}</h6>
-          </p>
-          <p className="twitter">
+          </div>
+          <div className="twitter">
             <h5>Twitter</h5>
             <h6>{props.handle}</h6>
-          </p>
-        </p>
+          </div>
+        </div>
       </div>
     </div>
   );
