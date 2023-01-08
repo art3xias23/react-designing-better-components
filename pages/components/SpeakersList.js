@@ -4,13 +4,15 @@ import {useEffect} from 'react'
 import {data} from './../SpeakerData'
 
 export default function SpeakersList({showSessions}){
-  const {speakerData, setSpeakerData} = useStateManager();
+  const {speakerData, setSpeakerData, isLoading, setIsLoading, hasErrored, setHasErrored} = useStateManager();
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   useEffect(async () => {
+    setIsLoading(true);
     await delay(2000);
     setSpeakerData(data)
+    setIsLoading(false)
   },[]);
 
   const onFavoriteToggle =(speakerId) =>{
@@ -24,6 +26,8 @@ export default function SpeakersList({showSessions}){
 
     setSpeakerData(newSpeakersData);
   }
+
+  if(isLoading) return <h3>Loading...</h3>
     return(
     <div className="container speakers-list">
       <div className="row">

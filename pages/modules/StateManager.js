@@ -4,5 +4,11 @@ export function useStateManager() {
 const [showSessions, setShowSessions] = useState(true);
   const [theme, setTheme] = useState("light");
   const [speakerData, setSpeakerData] = useState([]);
-  return {showSessions, setShowSessions, theme, setTheme, speakerData, setSpeakerData};
+  const [isLoading, setIsLoading] = useState(true)
+  const [hasErrored, setHasErrored] = useState(false);
+  return {showSessions, setShowSessions,
+    theme, setTheme, 
+    speakerData, setSpeakerData,
+  isLoading, setIsLoading,
+hasErrored, setHasErrored};
 }
