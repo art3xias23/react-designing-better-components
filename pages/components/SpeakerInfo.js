@@ -1,4 +1,13 @@
+import {useState} from 'react'
+import SpeakerFavorite from './SpeakerFavorite'
+
 export default function SpeakerInfo(props) {
+  const [favorite, setFavorite] = useState(props.favorite);
+  const onFavoriteToggle =(event) =>{
+    console.log("Toggled favorite")
+    console.dir(event.currentTarget)
+    setFavorite(!favorite)
+  }
   return (
     <div className="speaker-info">
       <div className="d-flex justify-content-between mb-3">
@@ -6,6 +15,7 @@ export default function SpeakerInfo(props) {
           {props.first} {props.last}
         </h3>
       </div>
+      <SpeakerFavorite favorite={favorite} onFavoriteToggle={onFavoriteToggle}/>
       <div>
         <p className="card-description">
           {props.bio}
