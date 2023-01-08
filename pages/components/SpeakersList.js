@@ -42,9 +42,16 @@ export default function SpeakersList({showSessions}){
       ERROR: <b>loading Speaker Data Failed : {error}</b>
     </div>
   )
-  if(isLoading) return <h3>Loading...</h3>
+
+  //if(isLoading) return <h3>Loading...</h3>
+
     return(
     <div className="container speakers-list">
+      <ReactPlaceholder
+      type="media"
+      rows={15}
+      className="speakerslist-placeholder"
+      ready={isLoading == false} >
       <div className="row">
         {speakerData.map((speaker) => 
           <Speaker key={speaker.id} 
@@ -54,6 +61,7 @@ export default function SpeakersList({showSessions}){
           />
         )}
       </div>
+      </ReactPlaceholder>
     </div>
     )
 }
