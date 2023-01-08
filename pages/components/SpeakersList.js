@@ -4,15 +4,24 @@ import {useEffect} from 'react'
 import {data} from './../SpeakerData'
 
 export default function SpeakersList({showSessions}){
-  const {speakerData, setSpeakerData, isLoading, setIsLoading, hasErrored, setHasErrored} = useStateManager();
+  const {speakerData, setSpeakerData, 
+    isLoading, setIsLoading, 
+    hasErrored, setHasErrored,
+  error, setError} = useStateManager();
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   useEffect(async () => {
+    try{
     setIsLoading(true);
     await delay(2000);
     setSpeakerData(data)
     setIsLoading(false)
+    }
+    catch(error){
+      setHasErrored(true);
+      setError(error);
+    }
   },[]);
 
   const onFavoriteToggle =(speakerId) =>{
@@ -27,6 +36,11 @@ export default function SpeakersList({showSessions}){
     setSpeakerData(newSpeakersData);
   }
 
+  if(hasErrored) return(
+    <div className="text-danger">
+      ERROR: <b>loading Speaker Data Failed : {error}</b>
+    </div>
+  )
   if(isLoading) return <h3>Loading...</h3>
     return(
     <div className="container speakers-list">

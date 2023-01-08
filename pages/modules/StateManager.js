@@ -6,9 +6,12 @@ const [showSessions, setShowSessions] = useState(true);
   const [speakerData, setSpeakerData] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
   const [hasErrored, setHasErrored] = useState(false);
+  const [error, setError] = useState();
+
   return {showSessions, setShowSessions,
     theme, setTheme, 
     speakerData, setSpeakerData,
   isLoading, setIsLoading,
-hasErrored, setHasErrored};
+hasErrored, setHasErrored,
+error, setError};
 }
