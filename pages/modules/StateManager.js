@@ -37,6 +37,6 @@ const [showSessions, setShowSessions] = useState(true);
 
   return {speakerData, isLoading,
   hasErrored, error,
-  onFavoriteToggle
+  onFavoriteToggle, setShowSessions, showSessions, setTheme, theme
 };
 }
