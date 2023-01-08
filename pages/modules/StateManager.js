@@ -1,9 +1,8 @@
 import {useState} from 'react'
-import {data} from './../SpeakerData'
 export function useStateManager() {
 
 const [showSessions, setShowSessions] = useState(true);
   const [theme, setTheme] = useState("light");
-  const [speakerData, setSpeakerData] = useState(data);
+  const [speakerData, setSpeakerData] = useState([]);
   return {showSessions, setShowSessions, theme, setTheme, speakerData, setSpeakerData};
 }

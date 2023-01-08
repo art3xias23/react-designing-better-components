@@ -1,7 +1,18 @@
 import Speaker from './Speaker'
-import { useStateManager } from '../modules/StateManager'
+import {useStateManager } from '../modules/StateManager'
+import {useEffect} from 'react'
+import {data} from './../SpeakerData'
+
 export default function SpeakersList({showSessions}){
   const {speakerData, setSpeakerData} = useStateManager();
+
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  useEffect(async () => {
+    await delay(2000);
+    setSpeakerData(data)
+  },[]);
+
   const onFavoriteToggle =(speakerId) =>{
     console.log("re-toggle")
     const speakerPrevData = speakerData.find(function(x) {return  x.id==speakerId});
