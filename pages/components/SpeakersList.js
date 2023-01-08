@@ -1,21 +1,20 @@
 import Speaker from './Speaker'
 import {useStateManager } from '../modules/StateManager'
 import ReactPlaceholder from 'react-placeholder/lib'
+import {REQUEST_STATUS} from './../enums/requestStatus'
 
 export default function SpeakersList({showSessions}){
   const {speakerData, isLoading,
-    hasErrored, error,
+    requestStatus,
     onFavoriteToggle} = useStateManager(2000);
 
   
 
-  if(hasErrored) return(
+  if(requestStatus == REQUEST_STATUS.FAILURE) return(
     <div className="text-danger">
       ERROR: <b>loading Speaker Data Failed : {error}</b>
     </div>
   )
-
-  //if(isLoading) return <h3>Loading...</h3>
 
     return(
     <div className="container speakers-list">
@@ -23,7 +22,7 @@ export default function SpeakersList({showSessions}){
       type="media"
       rows={15}
       className="speakerslist-placeholder"
-      ready={isLoading == false} >
+      ready={requestStatus == REQUEST_STATUS.SUCCESS} >
       <div className="row">
         {speakerData.map((speaker) => 
           <Speaker key={speaker.id} 

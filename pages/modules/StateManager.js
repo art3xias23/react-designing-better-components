@@ -1,24 +1,24 @@
 import {useState, useEffect} from 'react'
 import {data} from './../SpeakerData'
+import {REQUEST_STATUS} from './../enums/requestStatus'
 export function useStateManager(ms) {
 
 const [showSessions, setShowSessions] = useState(true);
   const [theme, setTheme] = useState("light");
   const [speakerData, setSpeakerData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
-  const [hasErrored, setHasErrored] = useState(false);
+  const [requestStatus, setRequestStatus] = useState("")
   const [error, setError] = useState();
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   useEffect(async () => {
     try{
-    setIsLoading(true);
+    setRequestStatus(REQUEST_STATUS.LOADING);
     await delay(ms);
     setSpeakerData(data)
-    setIsLoading(false)
+    setRequestStatus(REQUEST_STATUS.SUCCESS)
     }
     catch(error){
-      setHasErrored(true);
+      setRequestStatus(REQUEST_STATUS.FAILURE);
       setError(error);
     }
   },[]);
@@ -35,8 +35,7 @@ const [showSessions, setShowSessions] = useState(true);
     setSpeakerData(newSpeakersData);
   }
 
-  return {speakerData, isLoading,
-  hasErrored, error,
+  return {speakerData, requestStatus, error,
   onFavoriteToggle, setShowSessions, showSessions, setTheme, theme
 };
 }
