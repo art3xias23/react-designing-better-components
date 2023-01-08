@@ -2,7 +2,9 @@ import SpeakerSessions from "./SpeakerSessions";
 import SpeakerInfo from "./SpeakerInfo";
 import SpeakerPicture from "./SpeakerPicture";
 export default function Speaker({
-  speaker: { id, first, last, bio, company, twitterHandle, favorite, sessions },showSessions
+  speaker: { id, first, last, bio, company, twitterHandle, favorite, sessions },
+  showSessions,
+  onFavoriteToggle
 }) {
   return (
     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
@@ -14,7 +16,8 @@ export default function Speaker({
           bio={bio}
           company={company}
           handle={twitterHandle}
-          fav={favorite}
+          favorite={favorite}
+          onFavoriteToggle ={onFavoriteToggle}
         />
       </div>
       {showSessions &&

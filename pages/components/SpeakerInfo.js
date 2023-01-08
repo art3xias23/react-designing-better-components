@@ -2,11 +2,11 @@ import {useState} from 'react'
 import SpeakerFavorite from './SpeakerFavorite'
 
 export default function SpeakerInfo(props) {
-  const [favorite, setFavorite] = useState(props.favorite);
-  const onFavoriteToggle =(event) =>{
-    console.log("Toggled favorite")
-    console.dir(event.currentTarget)
-    setFavorite(!favorite)
+  if(props.first == "Arun")
+  {
+
+  console.log("Rerendering Speaker Info");
+  console.log(props.favorite)
   }
   return (
     <div className="speaker-info">
@@ -15,7 +15,7 @@ export default function SpeakerInfo(props) {
           {props.first} {props.last}
         </h3>
       </div>
-      <SpeakerFavorite favorite={favorite} onFavoriteToggle={onFavoriteToggle}/>
+      <SpeakerFavorite favorite={props.favorite} onFavoriteToggle={props.onFavoriteToggle}/>
       <div>
         <p className="card-description">
           {props.bio}
