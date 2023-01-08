@@ -2,6 +2,7 @@ import Speaker from './Speaker'
 import {useStateManager } from '../modules/StateManager'
 import {useEffect} from 'react'
 import {data} from './../SpeakerData'
+import ReactPlaceholder from 'react-placeholder/lib'
 
 export default function SpeakersList({showSessions}){
   const {speakerData, setSpeakerData, 
