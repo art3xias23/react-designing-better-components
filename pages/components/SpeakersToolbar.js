@@ -1,3 +1,4 @@
+import {useStateManager} from './../modules/StateManager'
 
 function SpeakersToolbar({theme, setTheme, showSessions,setShowSessions}) {
   return (
