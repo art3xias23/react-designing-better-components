@@ -1,6 +1,6 @@
-/.next/cache/
-/.next/static/
-/.next/trace
+/.next/
+/.next/
+/.next/
 /node_modules/
 
 
