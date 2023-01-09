@@ -6,10 +6,7 @@ export default function Speaker({
   showSessions,
  updateRecord 
 }) 
-    {if(id == 8590)
-    {
-      console.log("Fav" , favorite);
-    }
+{
   
   return (
     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">

@@ -20,22 +20,23 @@ export function useSpeakerStateManager(ms, initialData = []) {
     }
   }, []);
 
-  function updateRecord(updatedRecord) {
+  function updateRecord(updatedRecord, doneCallBack) {
     console.log(`${updatedRecord.first} and ${updatedRecord.favorite}`)
 
     const newRecords = data.map((record) =>
       record.id == updatedRecord.id ? updatedRecord : record
     );
 
-    async function loadDelay() {
+    async function delayFunction() {
       try {
         await delay(ms);
+        if(doneCallBack) doneCallBack();
         setData(newRecords);
       } catch(error) {
         throw error;
       }
     }
-    loadDelay();
+    delayFunction();
   }
   return { data, requestStatus, error, updateRecord };
 }

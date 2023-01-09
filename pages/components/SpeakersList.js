@@ -26,7 +26,7 @@ export default function SpeakersList({showSessions}){
           <Speaker key={speaker.id} 
           speaker={speaker} 
           showSessions={showSessions} 
-         updateRecord ={() => updateRecord({...speaker, favorite: !speaker.favorite})} 
+         updateRecord ={(doneCallBack) => updateRecord({...speaker, favorite: !speaker.favorite}, doneCallBack)} 
           />
         )}
       </div>
