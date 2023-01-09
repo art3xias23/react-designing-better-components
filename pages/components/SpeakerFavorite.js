@@ -1,10 +1,16 @@
+import { useVisibilityStateManager } from "../modules/VisibilityStateManager";
 export default function SpeakerFavorite({ favorite, updateRecord }) {
+
+ const {inTransition, setInTransition} = useVisibilityStateManager(); 
+
   function doneCallBack(){
+    setInTransition(false)
     console.log(`In SpeakerFavorite ${new Date().getMilliseconds()}`)
   }
     return (
       <div className="action padB1">
-        <span onClick={() => {
+        <div onClick={() => {
+          setInTransition(true);
           updateRecord(doneCallBack)
         }}>
           <i
@@ -13,7 +19,9 @@ export default function SpeakerFavorite({ favorite, updateRecord }) {
             }
           />{" "}
           Favorite{" "}
-        </span>
+          {inTransition ? 
+          <span className="fas fa-circle-notch fa-spin"/> : null}
+        </div>
       </div>
     );
   }
