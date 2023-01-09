@@ -1,21 +1,19 @@
 import Speaker from './Speaker'
-import {useStateManager } from '../modules/StateManager'
+import {useSpeakerStateManager } from '../modules/SpeakerStateManager'
 import ReactPlaceholder from 'react-placeholder/lib'
 import {REQUEST_STATUS} from './../enums/requestStatus'
+import {initialData} from '../data'
 
 export default function SpeakersList({showSessions}){
-  const {speakerData, isLoading,
+  const {data,error,
     requestStatus,
-    onFavoriteToggle} = useStateManager(2000);
-
-  
+    updateRecord} = useSpeakerStateManager(2000, initialData);
 
   if(requestStatus == REQUEST_STATUS.FAILURE) return(
     <div className="text-danger">
       ERROR: <b>loading Speaker Data Failed : {error}</b>
     </div>
   )
-
     return(
     <div className="container speakers-list">
       <ReactPlaceholder
@@ -24,11 +22,11 @@ export default function SpeakersList({showSessions}){
       className="speakerslist-placeholder"
       ready={requestStatus == REQUEST_STATUS.SUCCESS} >
       <div className="row">
-        {speakerData.map((speaker) => 
+        {data.map((speaker) => 
           <Speaker key={speaker.id} 
           speaker={speaker} 
           showSessions={showSessions} 
-         onFavoriteToggle ={() => onFavoriteToggle(speaker.id)} 
+         updateRecord ={() => updateRecord({...speaker, favorite: !speaker.favorite})} 
           />
         )}
       </div>

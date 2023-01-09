@@ -4,8 +4,13 @@ import SpeakerPicture from "./SpeakerPicture";
 export default function Speaker({
   speaker: { id, first, last, bio, company, twitterHandle, favorite, sessions },
   showSessions,
-  onFavoriteToggle
-}) {
+ updateRecord 
+}) 
+    {if(id == 8590)
+    {
+      console.log("Fav" , favorite);
+    }
+  
   return (
     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
       <div className="card card-height p-4 mt-4">
@@ -17,7 +22,7 @@ export default function Speaker({
           company={company}
           handle={twitterHandle}
           favorite={favorite}
-          onFavoriteToggle ={onFavoriteToggle}
+          updateRecord ={updateRecord}
         />
       </div>
       {showSessions &&

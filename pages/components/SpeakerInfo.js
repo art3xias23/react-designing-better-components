@@ -1,13 +1,7 @@
 import {useState} from 'react'
 import SpeakerFavorite from './SpeakerFavorite'
 
-export default function SpeakerInfo({bio,first, last, favorite, onFavoriteToggle, company, handle}) {
-  if(first == "Arun")
-  {
-
-  console.log("Rerendering Speaker Info");
-  console.log(favorite)
-  }
+export default function SpeakerInfo({bio,first, last, favorite, updateRecord, company, handle}) {
   return (
     <div className="speaker-info">
       <div className="d-flex justify-content-between mb-3">
@@ -15,7 +9,7 @@ export default function SpeakerInfo({bio,first, last, favorite, onFavoriteToggle
           {first} {last}
         </h3>
       </div>
-      <SpeakerFavorite favorite={favorite} onFavoriteToggle={onFavoriteToggle}/>
+      <SpeakerFavorite favorite={favorite} updateRecord={updateRecord}/>
       <div>
         <p className="card-description">
           {bio}
