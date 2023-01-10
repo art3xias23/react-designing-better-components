@@ -1,5 +1,5 @@
 import Speaker from './Speaker'
-import {useSpeakerStateManager } from '../modules/SpeakerStateManager'
+import {useSpeakerStateManager } from '../hooks/SpeakerStateManager'
 import ReactPlaceholder from 'react-placeholder/lib'
 import {REQUEST_STATUS} from './../enums/requestStatus'
 import {initialData} from '../data'

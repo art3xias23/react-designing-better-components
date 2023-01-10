@@ -1,4 +1,4 @@
-import { useVisibilityStateManager } from "../modules/VisibilityStateManager";
+import { useVisibilityStateManager } from "../hooks/VisibilityStateManager";
 export default function SpeakerFavorite({ favorite, updateRecord }) {
 
  const {inTransition, setInTransition} = useVisibilityStateManager(); 
