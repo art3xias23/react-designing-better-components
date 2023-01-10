@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { REQUEST_STATUS } from "../enums/requestStatus";
 
-export function useSpeakerStateManager(ms, initialData = []) {
+export function useStateManager(ms, initialData = []) {
   const [data, setData] = useState([]);
   const [requestStatus, setRequestStatus] = useState("");
   const [error, setError] = useState();
+  const [theme, setTheme] = useState("light");
+  const [showSessions, setShowSessions] = useState(true);
+  const [inTransition, setInTransition] = useState(false);
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -44,5 +47,5 @@ export function useSpeakerStateManager(ms, initialData = []) {
     }
     delayFunction();
   }
-  return { data, requestStatus, error, updateRecord };
+  return { data, requestStatus, error, updateRecord,theme, setTheme, showSessions,setShowSessions, inTransition, setInTransition };
 }

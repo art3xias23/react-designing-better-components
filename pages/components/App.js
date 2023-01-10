@@ -1,20 +1,12 @@
-import Header from './Header'
-import Speakers from './Speakers'
-import { useVisibilityStateManager } from '../modules/VisibilityStateManager'
-import {createContext} from 'react'
+import Header from "./Header";
+import Speakers from "./Speakers";
+import Layout from "./Layout";
 
-export const ThemeContext = createContext();
-export default function App(){
-const {theme, setTheme, showSessions, setShowSessions} = useVisibilityStateManager();
-console.log(`Theme: `, theme);
-    return(
-      <ThemeContext.Provider value={
-        {setTheme, theme}
-      }>
-    <div className={theme === "light" ? "container-fluid light" : "container-fluid dark"}>
-      <Header />
-      <Speakers setShowSessions={setShowSessions}/>
-    </div>
-    </ThemeContext.Provider>
-    )
+export default function App() {
+  return (
+    <Layout startingTheme="light">
+        <Header />
+        <Speakers setShowSessions={setShowSessions} />
+    </Layout>
+  );
 }

@@ -1,17 +1,12 @@
 import SpeakersToolbar from './SpeakersToolbar'
 import SpeakersList from './SpeakersList'
-import {data} from '../data'
 
-export default function Speakers({theme, setTheme, showSessions, setShowSessions}) {
+export default function Speakers() {
   return (
     <>
       <SpeakersToolbar
-        theme={theme}
-        setTheme={setTheme}
-        showSessions={showSessions}
-        setShowSessions={setShowSessions}
       />
-      <SpeakersList data={data} showSessions={showSessions} />
+      <SpeakersList />
     </>
   );
 }
