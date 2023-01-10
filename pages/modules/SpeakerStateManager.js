@@ -5,6 +5,9 @@ export function useSpeakerStateManager(ms, initialData = []) {
   const [data, setData] = useState([]);
   const [requestStatus, setRequestStatus] = useState("");
   const [error, setError] = useState();
+  const [theme, setTheme] = useState("light");
+  const [showSessions, setShowSessions] = useState(true);
+  const [inTransition, setInTransition] = useState(false);
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
