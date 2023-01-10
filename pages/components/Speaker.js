@@ -1,13 +1,14 @@
 import SpeakerSessions from "./SpeakerSessions";
 import SpeakerInfo from "./SpeakerInfo";
 import SpeakerPicture from "./SpeakerPicture";
+import { ThemeContext } from "../contexts/ThemeContext";
+import { useContext } from "react";
 export default function Speaker({
   speaker: { id, first, last, bio, company, twitterHandle, favorite, sessions },
-  showSessions,
- updateRecord 
-}) 
-{
-  
+  updateRecord,
+}) {
+  const { showSessions } = useContext(ThemeContext);
+
   return (
     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
       <div className="card card-height p-4 mt-4">
@@ -19,11 +20,15 @@ export default function Speaker({
           company={company}
           handle={twitterHandle}
           favorite={favorite}
-          updateRecord ={updateRecord}
+          updateRecord={updateRecord}
         />
       </div>
-      {showSessions &&
-      <SpeakerSessions title={sessions[0].title} room={sessions[0].room.name} />}
+      {showSessions && (
+        <SpeakerSessions
+          title={sessions[0].title}
+          room={sessions[0].room.name}
+        />
+      )}
     </div>
   );
 }

@@ -6,7 +6,7 @@ export default function App() {
   return (
     <Layout startingTheme="light">
         <Header />
-        <Speakers setShowSessions={setShowSessions} />
+        <Speakers  />
     </Layout>
   );
 }
