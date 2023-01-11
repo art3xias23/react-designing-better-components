@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
 import Session from "./Session";
 export default function SpeakerSessions({sessions}) {
-  const {eventYear} = useContext(SpeakerFilterContext);
+  const {eventYear, searchQuery} = useContext(SpeakerFilterContext);
   console.log("SpeakerSessions[0]: ")
   console.dir(sessions[0]);
   return (
