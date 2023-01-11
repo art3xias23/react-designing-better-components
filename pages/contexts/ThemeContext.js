@@ -4,9 +4,8 @@ export const ThemeContext = createContext();
 
 export function ThemeProvider({ children, startingTheme }) {
   const {theme, setTheme} = useTheme(startingTheme);
-  const [showSessions, setShowSessions] = useState(true);
   return (
-    <ThemeContext.Provider value={{ setTheme, theme,setShowSessions, showSessions }}>
+    <ThemeContext.Provider value={{ setTheme, theme }}>
         {children}
     </ThemeContext.Provider>
   );

@@ -11,8 +11,6 @@ export default function SpeakersList(){
     requestStatus,
     updateRecord} = useSpeakerStateManager(2000, initialData);
 
-    const {showSessions} = useContext(SpeakerFilterContext);
-
   if(requestStatus == REQUEST_STATUS.FAILURE) return(
     <div className="text-danger">
       ERROR: <b>loading Speaker Data Failed : {error}</b>
@@ -29,7 +27,6 @@ export default function SpeakersList(){
         {data.map((speaker) => 
           <Speaker key={speaker.id} 
           speaker={speaker} 
-          showSessions={showSessions} 
          updateRecord ={(doneCallBack) => updateRecord({...speaker, favorite: !speaker.favorite}, doneCallBack)} 
           />
         )}

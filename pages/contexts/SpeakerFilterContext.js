@@ -4,7 +4,7 @@ import useSpeakerFilter from '../hooks/useSpeakerFilter';
 
 const SpeakerFilterContext = createContext();
 
-function SpeakerFilterProvider({children, startingShowSessions = false}){
+function SpeakerFilterProvider({children, startingShowSessions}){
 
     const {showSessions, setShowSessions} = useSpeakerFilter(startingShowSessions);
 

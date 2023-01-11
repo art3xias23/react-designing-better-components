@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import SpeakerFavorite from './SpeakerFavorite'
 
 export default function SpeakerInfo({bio,first, last, favorite, updateRecord, company, handle}) {
