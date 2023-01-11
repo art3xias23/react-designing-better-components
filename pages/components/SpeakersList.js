@@ -3,11 +3,15 @@ import {useSpeakerStateManager } from '../hooks/SpeakerStateManager'
 import ReactPlaceholder from 'react-placeholder/lib'
 import {REQUEST_STATUS} from './../enums/requestStatus'
 import {initialData} from '../data'
+import { SpeakerFilterContext } from '../contexts/SpeakerFilterContext'
+import { useContext } from 'react'
 
-export default function SpeakersList({showSessions}){
+export default function SpeakersList(){
   const {data,error,
     requestStatus,
     updateRecord} = useSpeakerStateManager(2000, initialData);
+
+    const {showSessions} = useContext(SpeakerFilterContext);
 
   if(requestStatus == REQUEST_STATUS.FAILURE) return(
     <div className="text-danger">
