@@ -24,10 +24,7 @@ export default function Speaker({
         />
       </div>
       {showSessions && (
-        <SpeakerSessions
-          title={sessions[0].title}
-          room={sessions[0].room.name}
-        />
+        <SpeakerSessions sessions={sessions}/>
       )}
     </div>
   );
