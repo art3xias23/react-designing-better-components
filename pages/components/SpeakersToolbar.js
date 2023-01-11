@@ -1,16 +1,19 @@
-
 import { ThemeContext } from "../contexts/ThemeContext";
 import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
 import { useContext } from "react";
 
 function SpeakersToolbar() {
-
-  const {theme, setTheme} = useContext(ThemeContext);
-  const {showSessions, setShowSessions,
-         eventYear, setEventYear,
-         searchQuery, setSearchQuery, 
-         EVENT_YEARS} = useContext(SpeakerFilterContext);
-         console.log(`Event Years: ${EVENT_YEARS}`)
+  const { theme, setTheme } = useContext(ThemeContext);
+  const {
+    showSessions,
+    setShowSessions,
+    eventYear,
+    setEventYear,
+    searchQuery,
+    setSearchQuery,
+    EVENT_YEARS,
+  } = useContext(SpeakerFilterContext);
+  console.log(`Event Years: ${EVENT_YEARS}`);
   return (
     <section className="toolbar dark-theme-header">
       <div className="container">
@@ -19,14 +22,22 @@ function SpeakersToolbar() {
             <li className="d-flex flex-column flex-md-row">
               <b>Show Sessions&nbsp;&nbsp;</b>
               <label className="fav">
-                <input type="checkbox" checked={showSessions} onChange={(event) => setShowSessions(event.target.checked)} />
+                <input
+                  type="checkbox"
+                  checked={showSessions}
+                  onChange={(event) => setShowSessions(event.target.checked)}
+                />
                 <span className="switch"></span>
               </label>
             </li>
             <li className="d-flex flex-column flex-md-row ml-sm-5 ml-0">
               <strong>Theme</strong>
               <label className="dropdown">
-                <select className="form-control theme" value={theme} onChange={(event) => setTheme(event.target.value)}>
+                <select
+                  className="form-control theme"
+                  value={theme}
+                  onChange={(event) => setTheme(event.target.value)}
+                >
                   <option value="light">Light</option>
                   <option value="dark">Dark</option>
                 </select>
@@ -34,24 +45,33 @@ function SpeakersToolbar() {
             </li>
             <li>
               <div className="input-group">
-                <input type="text" className="form-control" placeholder="Search..."
-                      onChange={(event) => setSearchQuery(event.target.value) }
-                      />
-              </div>
-              <div className="input-group-append">
-                <button className="btn btn-secondary" 
-                type="button">
-                  <i className="fa fa-search"></i>
-                </button>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Search..."
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                />
+                <div className="input-group-append">
+                  <button className="btn btn-secondary" type="button">
+                    <i className="fa fa-search"></i>
+                  </button>
+                </div>
               </div>
             </li>
             <li className="d-flex flex-column flex-md-row">
               <strong>Year</strong>
               <label className="dropmenu">
-                <select className="form-control"
-                value={eventYear} onChange={(event) => setEventYear(event.target.value)}>
-                  {EVENT_YEARS.map((year) => <option value={year} key={year}>{year}</option>)}
-                  </select>
+                <select
+                  className="form-control"
+                  value={eventYear}
+                  onChange={(event) => setEventYear(event.target.value)}
+                >
+                  {EVENT_YEARS.map((year) => (
+                    <option value={year} key={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
               </label>
             </li>
           </ul>
