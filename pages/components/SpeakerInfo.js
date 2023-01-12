@@ -1,6 +1,9 @@
+import { useContext } from 'react';
+import { SpeakerContext } from '../contexts/SpeakerContext';
 import SpeakerFavorite from './SpeakerFavorite'
 
-export default function SpeakerInfo({bio,first, last, favorite, updateRecord, company, handle}) {
+export default function SpeakerInfo() {
+  const {speaker: {bio, first,last,favorite,company, handle}, updateRecord} = useContext(SpeakerContext);
   return (
     <div className="speaker-info">
       <div className="d-flex justify-content-between mb-3">
