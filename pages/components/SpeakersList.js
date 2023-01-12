@@ -5,13 +5,14 @@ import {REQUEST_STATUS} from './../enums/requestStatus'
 import {initialData} from '../data'
 import { useContext } from 'react'
 import { SpeakerFilterContext } from '../contexts/SpeakerFilterContext'
+import SpeakerAdd from './SpeakerAdd'
 
 export default function SpeakersList(){
   const {data,error,
     requestStatus,
     updateRecord, insertRecord, deleteRecord} = useSpeakerStateManager(2000, initialData);
 
-const {searchQuery} = useContext(SpeakerFilterContext);
+const {searchQuery, eventYear} = useContext(SpeakerFilterContext);
 
   if(requestStatus == REQUEST_STATUS.FAILURE) return(
     <div className="text-danger">
@@ -25,6 +26,7 @@ const {searchQuery} = useContext(SpeakerFilterContext);
       rows={15}
       className="speakerslist-placeholder"
       ready={requestStatus == REQUEST_STATUS.SUCCESS} >
+        <SpeakerAdd eventYear={eventYear} insertRecord={insertRecord}/>
       <div className="row">
         {data
         .filter((speaker) => searchQuery ? (speaker.first.includes(searchQuery) || speaker.last.includes(searchQuery)) : speaker)
