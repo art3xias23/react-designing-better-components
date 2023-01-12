@@ -1,6 +1,10 @@
 import { useVisibilityStateManager } from "../hooks/VisibilityStateManager";
-export default function SpeakerFavorite({ favorite, updateRecord }) {
+import { SpeakerContext } from "../contexts/SpeakerContext";
+import { useContext } from "react";
 
+export default function SpeakerFavorite() {
+
+const {speaker:{favorite}, updateRecord} = useContext(SpeakerContext);
  const {inTransition, setInTransition} = useVisibilityStateManager(); 
 
   function doneCallBack(){

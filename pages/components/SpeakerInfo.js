@@ -11,7 +11,7 @@ export default function SpeakerInfo() {
           {first} {last}
         </h3>
       </div>
-      <SpeakerFavorite favorite={favorite} updateRecord={updateRecord}/>
+      <SpeakerFavorite />
       <div>
         <p className="card-description">
           {bio}
