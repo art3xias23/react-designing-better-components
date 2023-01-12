@@ -1,10 +1,16 @@
 import { useContext } from "react";
+import { SpeakerContext } from "../contexts/SpeakerContext";
 import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
 import Session from "./Session";
-export default function SpeakerSessions({sessions}) {
-  const {eventYear, searchQuery} = useContext(SpeakerFilterContext);
+
+export default function SpeakerSessions() {
+
+  const{speaker:{sessions}} = useContext(SpeakerContext);
+  const {eventYear} = useContext(SpeakerFilterContext);
+
   console.log("SpeakerSessions[0]: ")
   console.dir(sessions[0]);
+
   return (
     sessions.filter((ss) => ss.eventYear == eventYear).map((session) => 
     <div className="sessionBox card h-250">
