@@ -34,6 +34,8 @@ const {searchQuery, eventYear} = useContext(SpeakerFilterContext);
           <Speaker key={speaker.id} 
           speaker={speaker} 
          updateRecord ={updateRecord} 
+         insertRecord ={insertRecord}
+         deleteRecord={deleteRecord}
           />
         )}
       </div>

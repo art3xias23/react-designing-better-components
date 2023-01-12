@@ -74,7 +74,7 @@ export function useSpeakerStateManager(ms, initialData = []) {
 function deleteRecord(record, doneCallBack) {
     const originalRecords = [...data];
 
-    const newRecords = [originalRecords.filter((rc) => rc.id != record.id)]
+    const newRecords = originalRecords.filter((rc) => rc.id != record.id)
     async function delayFunction() {
       try {
         setData(newRecords);
