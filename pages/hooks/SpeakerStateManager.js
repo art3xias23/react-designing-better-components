@@ -20,11 +20,15 @@ export function useSpeakerStateManager(ms, initialData = []) {
     }
   }, []);
 
-  function updateRecord(updatedRecord, doneCallBack) {
+  function updateRecord(record, doneCallBack) {
+
+    console.log("speaker state manager record: ")
+    console.dir(record);
+
     const originalRecords = [...data];
 
-    const newRecords = data.map((record) =>
-      record.id == updatedRecord.id ? updatedRecord : record
+    const newRecords = data.map((rc) =>
+      rc?.id == record.id ? record : rc 
     );
 
     async function delayFunction() {
@@ -44,5 +48,50 @@ export function useSpeakerStateManager(ms, initialData = []) {
     }
     delayFunction();
   }
-  return { data, requestStatus, error, updateRecord };
+
+  function insertRecord(record, doneCallBack) {
+    const originalRecords = [...data];
+
+    const newRecords = [record, ...data]
+    async function delayFunction() {
+      try {
+        setData(newRecords);
+         await delay(ms);
+        if (doneCallBack) {
+          doneCallBack();
+        }
+      } catch (error) {
+        console.log(error)
+        if (doneCallBack) {
+          doneCallBack();
+        }
+        setData(originalRecords);
+      }
+    }
+    delayFunction();
+  }
+
+function deleteRecord(record, doneCallBack) {
+    const originalRecords = [...data];
+
+    const newRecords = [originalRecords.filter((rc) => rc.id != record.id)]
+    async function delayFunction() {
+      try {
+        setData(newRecords);
+         await delay(ms);
+        if (doneCallBack) {
+          doneCallBack();
+        }
+      } catch (error) {
+        console.log(error)
+        if (doneCallBack) {
+          doneCallBack();
+        }
+        setData(originalRecords);
+      }
+    }
+    delayFunction();
+  }
+
+  return { data, requestStatus, error, updateRecord, insertRecord, deleteRecord };
 }

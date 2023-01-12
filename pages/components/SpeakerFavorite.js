@@ -4,8 +4,10 @@ import { useContext } from "react";
 
 export default function SpeakerFavorite() {
 
-const {speaker:{favorite}, updateRecord} = useContext(SpeakerContext);
+const {speaker, updateRecord} = useContext(SpeakerContext);
  const {inTransition, setInTransition} = useVisibilityStateManager(); 
+console.log("SpeakerFavorite:");
+console.dir(speaker);
 
   function doneCallBack(){
     setInTransition(false)
@@ -15,11 +17,12 @@ const {speaker:{favorite}, updateRecord} = useContext(SpeakerContext);
       <div className="action padB1">
         <div onClick={() => {
           setInTransition(true);
-          updateRecord(doneCallBack)
+          updateRecord({...speaker, favorite: !speaker.favorite}, 
+          doneCallBack)
         }}>
           <i
             className={
-              favorite === true ? "fa fa-star orange" : "fa fa-star-o orange"
+              speaker.favorite === true ? "fa fa-star orange" : "fa fa-star-o orange"
             }
           />{" "}
           Favorite{" "}

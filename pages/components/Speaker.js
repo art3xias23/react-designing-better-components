@@ -10,8 +10,6 @@ export default function Speaker({
   updateRecord,
 }) {
   const { showSessions } = useContext(SpeakerFilterContext);
-  // console.log(`Speaker.js Sessions Count`);
-  // console.dir(sessions.length)
 
   return (
     <SpeakerProvider speaker={speaker} updateRecord={updateRecord}>
@@ -20,7 +18,7 @@ export default function Speaker({
           <SpeakerPicture />
           <SpeakerInfo />
         </div>
-        {showSessions && <SpeakerSessions sessions={speaker.sessions} />}
+        {showSessions && <SpeakerSessions />}
       </div>
     </SpeakerProvider>
   );

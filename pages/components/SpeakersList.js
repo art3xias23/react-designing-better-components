@@ -9,7 +9,7 @@ import { SpeakerFilterContext } from '../contexts/SpeakerFilterContext'
 export default function SpeakersList(){
   const {data,error,
     requestStatus,
-    updateRecord} = useSpeakerStateManager(2000, initialData);
+    updateRecord, insertRecord, deleteRecord} = useSpeakerStateManager(2000, initialData);
 
 const {searchQuery} = useContext(SpeakerFilterContext);
 
@@ -31,7 +31,7 @@ const {searchQuery} = useContext(SpeakerFilterContext);
         .map((speaker) => 
           <Speaker key={speaker.id} 
           speaker={speaker} 
-         updateRecord ={(doneCallBack) => updateRecord({...speaker, favorite: !speaker.favorite}, doneCallBack)} 
+         updateRecord ={updateRecord} 
           />
         )}
       </div>
