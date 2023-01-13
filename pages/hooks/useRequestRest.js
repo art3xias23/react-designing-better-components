@@ -1,18 +1,22 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { REQUEST_STATUS } from "../enums/requestStatus";
+import useSpeakerStateManager from "./useSpeakerStateManager";
+import axios from "axios";
 
-export function useSpeakerStateManager(ms, initialData = []) {
-  const [data, setData] = useState([]);
-  const [requestStatus, setRequestStatus] = useState("");
-  const [error, setError] = useState();
+const restUrl = "api/speakers";
+
+export default function useRequestRest() {
+  const {data, setData,
+        requestStatus, setRequestStatus,
+      error, setError} = useSpeakerStateManager();
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   useEffect(async () => {
     try {
       setRequestStatus(REQUEST_STATUS.LOADING);
-      await delay(ms);
-      setData(initialData);
+      const result = await axios.get(restUrl);
+      setData(result.data);
       setRequestStatus(REQUEST_STATUS.SUCCESS);
     } catch (error) {
       setRequestStatus(REQUEST_STATUS.FAILURE);
@@ -34,7 +38,7 @@ export function useSpeakerStateManager(ms, initialData = []) {
     async function delayFunction() {
       try {
         setData(newRecords);
-         await delay(ms);
+        await axios.put(`${restUrl}/${record.id}`, record);
         if (doneCallBack) {
           doneCallBack();
         }
@@ -56,7 +60,7 @@ export function useSpeakerStateManager(ms, initialData = []) {
     async function delayFunction() {
       try {
         setData(newRecords);
-         await delay(ms);
+        await axios.post(`${restUrl}/99999`, record);
         if (doneCallBack) {
           doneCallBack();
         }
@@ -78,7 +82,7 @@ function deleteRecord(record, doneCallBack) {
     async function delayFunction() {
       try {
         setData(newRecords);
-         await delay(ms);
+        axios.delete(`${restUrl}/${record.id}`, record);
         if (doneCallBack) {
           doneCallBack();
         }
@@ -93,5 +97,5 @@ function deleteRecord(record, doneCallBack) {
     delayFunction();
   }
 
-  return { data, requestStatus, error, updateRecord, insertRecord, deleteRecord };
+  return { updateRecord, insertRecord, deleteRecord };
 }
