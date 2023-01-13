@@ -6,9 +6,9 @@ import axios from "axios";
 const restUrl = "api/speakers";
 
 export default function useRequestRest() {
-  const {data, setData,
-        requestStatus, setRequestStatus,
-      error, setError} = useSpeakerStateManager();
+  const {setData,
+         setRequestStatus,
+       setError} = useSpeakerStateManager();
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -16,6 +16,8 @@ export default function useRequestRest() {
     try {
       setRequestStatus(REQUEST_STATUS.LOADING);
       const result = await axios.get(restUrl);
+      console.log("useRequestRest, data: ");
+      console.dir(result.data);
       setData(result.data);
       setRequestStatus(REQUEST_STATUS.SUCCESS);
     } catch (error) {

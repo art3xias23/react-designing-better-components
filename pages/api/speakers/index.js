@@ -12,10 +12,10 @@ const delay = (ms) =>
 
 export default async function handler(req, res) {
   console.log("API request made");
-  console.log(JSON.stringify(data, null, 2));
   // res.status(200).send(JSON.stringify(data, null, 2));
 
   const jsonFile = path.resolve("./", "db.json");
+  console.dir(jsonFile);
 
   try {
     const readFileData = await readFile(jsonFile);
