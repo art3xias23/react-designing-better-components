@@ -85,14 +85,12 @@ export default async function handler(req, res) {
       const readFileData = await readFile(jsonFile);
       await delay(1000);
       const speakers = JSON.parse(readFileData).speakers;
-console.log("Speakers before delete: ")
-console.dir(speakers);
+console.log(`Speakers count before delete: ${speakers.length}`)
       if(!speakers){
         res.status(404).send("Error: Request failed with status code 404");
       } else{
         const newSpeakersArray = speakers.filter((rec) => rec.id != id);
-        console.log("Speakers after deletion")
-        console.dir(newSpeakersArray);
+console.log(`Speakers count before delete: ${speakers.length}`)
             writeFile(jsonFile, JSON.stringify({speakers: newSpeakersArray}, null, 2));
         res.setHeader("Content-Type", "application/json");
         res.status(200).send(JSON.stringify(speakers.find((rec) => rec.id == id), null, 2));
