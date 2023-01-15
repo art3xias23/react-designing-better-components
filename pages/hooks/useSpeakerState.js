@@ -5,7 +5,6 @@ export default function useSpeakerState() {
     const [requestStatus, setRequestStatus] = useState("");
     const [error, setError] = useState();
 
-    console.log("Called useSpeakerStateManager()")
     return {data, setData,
             requestStatus, setRequestStatus,
             error, setError}

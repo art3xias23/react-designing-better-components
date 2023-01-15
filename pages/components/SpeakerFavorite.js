@@ -6,12 +6,9 @@ export default function SpeakerFavorite() {
 
 const {speaker, updateRecord} = useContext(SpeakerContext);
  const {inTransition, setInTransition} = useVisibilityStateManager(); 
-console.log("SpeakerFavorite:");
-console.dir(speaker);
 
   function doneCallBack(){
     setInTransition(false)
-    console.log(`In SpeakerFavorite ${new Date().getMilliseconds()}`)
   }
     return (
       <div className="action padB1">

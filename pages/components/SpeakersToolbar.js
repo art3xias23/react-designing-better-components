@@ -14,7 +14,6 @@ function SpeakersToolbar() {
     EVENT_YEARS,
   } = useContext(SpeakerFilterContext);
 
-  console.log(`Called SpeakersToolbar`);
   return (
     <section className="toolbar dark-theme-header">
       <div className="container">

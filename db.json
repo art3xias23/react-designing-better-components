@@ -1,6 +1,23 @@
 {
   "speakers": [
     {
+      "id": 1,
+      "first": "dfds",
+      "last": "fdsfds",
+      "bio": "Bio not entered yet",
+      "sessions": [
+        {
+          "id": "88888",
+          "title": "New Session For dfds",
+          "room": {
+            "name": "Main Ball Room"
+          },
+          "eventYear": "2008"
+        }
+      ],
+      "favorite": false
+    },
+    {
       "id": "1269",
       "first": "Arun",
       "last": "Gupta",

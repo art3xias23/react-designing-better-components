@@ -13,14 +13,10 @@ const delay = (ms) =>
 
 export default async function handler(req, res) {
   const method = req?.method;
-  console.log(`[id].js method: ${method}`)
   const id = parseInt(req?.query.id);
-  console.log(`[id].js id: ${id}`)
   const recordFromBody = req?.body;
-  console.log(`[id].js recordFromBody`);
   console.dir(recordFromBody);
   const jsonFile = path.resolve("./", "db.json");
-  console.log(`[id].js jsonFile ${jsonFile} `);
 
   switch (method) {
     case "POST":
@@ -56,11 +52,9 @@ export default async function handler(req, res) {
             writeFile(jsonFile, JSON.stringify({speakers: newSpeakersArray}, null, 2));
         res.setHeader("Content-Type", "application/json");
         res.status(200).send(JSON.stringify(newRecord, null, 2));
-        console.log(`POST /api/speakers/{$id} status: 200`);
       }
 
     } catch (e) {
-      console.log("/api/speakers error", e);
       res.status(404).send("File Not Found on server");
     }
   }
@@ -79,11 +73,9 @@ export default async function handler(req, res) {
             writeFile(jsonFile, JSON.stringify({speakers: newSpeakersArray}, null, 2));
         res.setHeader("Content-Type", "application/json");
         res.status(200).send(JSON.stringify(recordFromBody, null, 2));
-        console.log(`POST /api/speakers/{$id} status: 200`);
       }
 
     } catch (e) {
-      console.log("/api/speakers error", e);
       res.status(404).send("File Not Found on server");
     }
   }
@@ -99,7 +91,7 @@ console.dir(speakers);
         res.status(404).send("Error: Request failed with status code 404");
       } else{
         const newSpeakersArray = speakers.filter((rec) => rec.id != id);
-        console.log("newSpeakersBody after deletion")
+        console.log("Speakers after deletion")
         console.dir(newSpeakersArray);
             writeFile(jsonFile, JSON.stringify({speakers: newSpeakersArray}, null, 2));
         res.setHeader("Content-Type", "application/json");
@@ -108,7 +100,7 @@ console.dir(speakers);
       }
 
     } catch (e) {
-      console.log("/api/speakers error", e);
+      console.log("/api/speakers delete error", e);
       res.status(404).send("File Not Found on server");
     }
   }

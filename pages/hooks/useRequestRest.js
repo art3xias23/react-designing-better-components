@@ -6,8 +6,6 @@ import axios from "axios";
 const restUrl = "api/speakers";
 
 export default function useRequestRest() {
-  console.log("Called useRequestRest");
-  console.log("useRequestRet calling useSpeakerStateManager()")
   const {data,error,requestStatus,setData,
          setRequestStatus,
        setError} = useSpeakerStateManager();
@@ -16,11 +14,8 @@ export default function useRequestRest() {
 
   useEffect(async () => {
     try {
-  console.log("Calling useRequestRest useEffect()");
       setRequestStatus(REQUEST_STATUS.LOADING);
       const result = await axios.get(restUrl);
-      console.log("useRequestRest, data: ");
-      console.dir(result.data);
       setData(result.data);
       setRequestStatus(REQUEST_STATUS.SUCCESS);
       return () => console.log("Exiting useRequestRest useEffect()")
@@ -31,10 +26,6 @@ export default function useRequestRest() {
   }, []);
 
   function updateRecord(record, doneCallBack) {
-
-    console.log("speaker state manager record: ")
-    console.dir(record);
-
     const originalRecords = [...data];
 
     const newRecords = data.map((rc) =>

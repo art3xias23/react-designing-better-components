@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { SpeakerContext } from "../contexts/SpeakerContext";
 
-function speakerDelete() {
+function SpeakerDelete() {
   const { speaker, deleteRecord } = useContext(SpeakerContext);
-
+  console.log("SpeakerDelete speaker")
+  console.dir(speaker);
+  console.dir(deleteRecord);
   return (
     <span className="session w-100">
       <a href="#" className="remSes">
@@ -25,4 +27,4 @@ function speakerDelete() {
   );
 }
 
-export default speakerDelete;
+export default SpeakerDelete;

@@ -8,15 +8,9 @@ import { SpeakerFilterContext } from '../contexts/SpeakerFilterContext'
 import SpeakerAdd from './SpeakerAdd'
 
 export default function SpeakersList(){
-console.log("Called SpeakersList");
     const {data, error, requestStatus,updateRecord, 
       insertRecord, 
       deleteRecord} = useRequestRest();
-
-    console.log("SpeakersList, data: ")
-console.dir(data)
-    console.log("SpeakersList, req status: ")
-console.dir(requestStatus);
 
 const {searchQuery, eventYear} = useContext(SpeakerFilterContext);
 
@@ -40,7 +34,6 @@ const {searchQuery, eventYear} = useContext(SpeakerFilterContext);
           <Speaker key={speaker.id} 
           speaker={speaker} 
          updateRecord ={updateRecord} 
-         insertRecord ={insertRecord}
          deleteRecord={deleteRecord}
           />
         )}

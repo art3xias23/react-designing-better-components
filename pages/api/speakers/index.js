@@ -11,24 +11,19 @@ const delay = (ms) =>
   });
 
 export default async function handler(req, res) {
-  console.log("index.js")
-  console.log("API request made. Req object: ");
   // res.status(200).send(JSON.stringify(data, null, 2));
 
   const jsonFile = path.resolve("./", "db.json");
-  console.dir(jsonFile);
 
   try {
     const readFileData = await readFile(jsonFile);
     await delay(1000);
     const speakers = JSON.parse(readFileData).speakers;
-    console.log("index.js obtained speakers from api")
     if (speakers) {
       res.setHeader("Content-Type", "application/json");
       res.status(200).send(JSON.stringify(speakers, null, 2));
     }
   } catch (e) {
-    console.log("/api/speakers error", e);
     res.status(404).send("File Not Found on server");
   }
 }
