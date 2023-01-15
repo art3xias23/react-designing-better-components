@@ -11,7 +11,7 @@ function speakerDelete() {
           onClick={(e) => {
             e.preventDefault();
             if (
-              window.confirm("Are you sure you want to delete this speaker?")
+              window.confirm(`Are you sure you want to delete speaker ${speaker.first} ${speaker.last}?`)
             ) {
               deleteRecord(speaker);
             }
