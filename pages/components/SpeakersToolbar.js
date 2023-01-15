@@ -13,7 +13,8 @@ function SpeakersToolbar() {
     setSearchQuery,
     EVENT_YEARS,
   } = useContext(SpeakerFilterContext);
-  console.log(`Event Years: ${EVENT_YEARS}`);
+
+  console.log(`Called SpeakersToolbar`);
   return (
     <section className="toolbar dark-theme-header">
       <div className="container">

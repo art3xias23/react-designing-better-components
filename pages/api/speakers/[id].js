@@ -12,14 +12,15 @@ const delay = (ms) =>
   });
 
 export default async function handler(req, res) {
-  console.log("API request made");
-  console.log(JSON.stringify(data, null, 2));
-  // res.status(200).send(JSON.stringify(data, null, 2));
-
   const method = req?.method;
+  console.log(`[id].js method: ${method}`)
   const id = parseInt(req?.query.id);
+  console.log(`[id].js id: ${id}`)
   const recordFromBody = req?.body;
+  console.log(`[id].js recordFromBody`);
+  console.dir(recordFromBody);
   const jsonFile = path.resolve("./", "db.json");
+  console.log(`[id].js jsonFile ${jsonFile} `);
 
   switch (method) {
     case "POST":

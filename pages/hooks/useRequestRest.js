@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { REQUEST_STATUS } from "../enums/requestStatus";
-import useSpeakerStateManager from "./useSpeakerStateManager";
+import useSpeakerStateManager from "./useSpeakerState";
 import axios from "axios";
 
 const restUrl = "api/speakers";
 
 export default function useRequestRest() {
-  const {setData,
+  console.log("Called useRequestRest");
+  console.log("useRequestRet calling useSpeakerStateManager()")
+  const {data,error,requestStatus,setData,
          setRequestStatus,
        setError} = useSpeakerStateManager();
 
@@ -14,12 +16,14 @@ export default function useRequestRest() {
 
   useEffect(async () => {
     try {
+  console.log("Calling useRequestRest useEffect()");
       setRequestStatus(REQUEST_STATUS.LOADING);
       const result = await axios.get(restUrl);
       console.log("useRequestRest, data: ");
       console.dir(result.data);
       setData(result.data);
       setRequestStatus(REQUEST_STATUS.SUCCESS);
+      return () => console.log("Exiting useRequestRest useEffect()")
     } catch (error) {
       setRequestStatus(REQUEST_STATUS.FAILURE);
       setError(error);
@@ -99,5 +103,5 @@ function deleteRecord(record, doneCallBack) {
     delayFunction();
   }
 
-  return { updateRecord, insertRecord, deleteRecord };
+  return { data, error, requestStatus, updateRecord, insertRecord, deleteRecord };
 }

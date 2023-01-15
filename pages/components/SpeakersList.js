@@ -1,5 +1,5 @@
 import Speaker from './Speaker'
-import useSpeakerStateManager from '../hooks/useSpeakerStateManager'
+import useSpeakerState from '../hooks/useSpeakerState'
 import useRequestRest from '../hooks/useRequestRest'
 import ReactPlaceholder from 'react-placeholder/lib'
 import {REQUEST_STATUS} from './../enums/requestStatus'
@@ -8,9 +8,10 @@ import { SpeakerFilterContext } from '../contexts/SpeakerFilterContext'
 import SpeakerAdd from './SpeakerAdd'
 
 export default function SpeakersList(){
-  const {data,error,
-    requestStatus} = useSpeakerStateManager();
-    const {updateRecord, insertRecord, deleteRecord} = useRequestRest();
+console.log("Called SpeakersList");
+    const {data, error, requestStatus,updateRecord, 
+      insertRecord, 
+      deleteRecord} = useRequestRest();
 
     console.log("SpeakersList, data: ")
 console.dir(data)

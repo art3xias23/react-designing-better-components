@@ -11,7 +11,8 @@ const delay = (ms) =>
   });
 
 export default async function handler(req, res) {
-  console.log("API request made");
+  console.log("index.js")
+  console.log("API request made. Req object: ");
   // res.status(200).send(JSON.stringify(data, null, 2));
 
   const jsonFile = path.resolve("./", "db.json");
@@ -21,6 +22,7 @@ export default async function handler(req, res) {
     const readFileData = await readFile(jsonFile);
     await delay(1000);
     const speakers = JSON.parse(readFileData).speakers;
+    console.log("index.js obtained speakers from api")
     if (speakers) {
       res.setHeader("Content-Type", "application/json");
       res.status(200).send(JSON.stringify(speakers, null, 2));
