@@ -1,12 +1,12 @@
 import SpeakerSessions from "./SpeakerSessions";
 import SpeakerInfo from "./SpeakerInfo";
 import SpeakerPicture from "./SpeakerPicture";
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
 import { SpeakerProvider } from "../contexts/SpeakerContext";
 import SpeakerDelete from './SpeakerDelete'
 
-export default function Speaker({
+const Speaker = memo(function Speaker({
   speaker,
   updateRecord,
   deleteRecord
@@ -25,4 +25,10 @@ export default function Speaker({
       </div>
     </SpeakerProvider>
   );
+}, areEqualSpeaker);
+
+function areEqualSpeaker(prevProps, nextProps){
+  return (prevProps.speaker.favorite == nextProps.speaker.favorite);
 }
+
+export default Speaker;
