@@ -1,4 +1,3 @@
-//import {initialData as data} from '../../../data'
 import path from "path";
 import fs from "fs";
 
@@ -11,7 +10,6 @@ const delay = (ms) =>
   });
 
 export default async function handler(req, res) {
-  // res.status(200).send(JSON.stringify(data, null, 2));
 
   const jsonFile = path.resolve("./", "db.json");
 

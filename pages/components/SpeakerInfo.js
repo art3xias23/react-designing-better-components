@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { SpeakerContext } from '../contexts/SpeakerContext';
+import { SpeakerContext } from '../../contexts/SpeakerContext';
 import SpeakerFavorite from './SpeakerFavorite'
 
 export default function SpeakerInfo() {
@@ -14,7 +14,7 @@ export default function SpeakerInfo() {
       <SpeakerFavorite />
       <div>
         <p className="card-description">
-          {bio}
+          {bio.substring(0,70)}
         </p>
         <div className="social d-flex flex-row mt-4">
           <div className="company">

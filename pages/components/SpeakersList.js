@@ -1,10 +1,9 @@
 import Speaker from './Speaker'
-import useSpeakerState from '../hooks/useSpeakerState'
-import useRequestRest from '../hooks/useRequestRest'
+import useRequestRest from '../../hooks/useRequestRest'
 import ReactPlaceholder from 'react-placeholder/lib'
-import {REQUEST_STATUS} from './../enums/requestStatus'
+import {REQUEST_STATUS} from '../../enums/requestStatus'
 import { useContext } from 'react'
-import { SpeakerFilterContext } from '../contexts/SpeakerFilterContext'
+import { SpeakerFilterContext } from '../../contexts/SpeakerFilterContext'
 import SpeakerAdd from './SpeakerAdd'
 
 export default function SpeakersList(){

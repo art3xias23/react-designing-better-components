@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { SpeakerContext } from "../contexts/SpeakerContext";
-import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
+import { SpeakerContext } from "../../contexts/SpeakerContext";
+import { SpeakerFilterContext } from "../../contexts/SpeakerFilterContext";
 import Session from "./Session";
 
 export default function SpeakerSessions() {

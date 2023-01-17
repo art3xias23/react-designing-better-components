@@ -1,5 +1,5 @@
-import { useVisibilityStateManager } from "../hooks/VisibilityStateManager";
-import { SpeakerContext } from "../contexts/SpeakerContext";
+import { useVisibilityStateManager } from "../../hooks/VisibilityStateManager";
+import { SpeakerContext } from "../../contexts/SpeakerContext";
 import { useContext } from "react";
 
 export default function SpeakerFavorite() {

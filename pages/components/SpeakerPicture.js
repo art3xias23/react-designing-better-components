@@ -1,4 +1,4 @@
-import { SpeakerContext } from "../contexts/SpeakerContext";
+import { SpeakerContext } from "../../contexts/SpeakerContext";
 import {useContext, useState} from 'react';
 
 

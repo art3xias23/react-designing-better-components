@@ -1,4 +1,4 @@
-import { ThemeContext, ThemeProvider } from '../contexts/ThemeContext';
+import { ThemeContext, ThemeProvider } from '../../contexts/ThemeContext';
 import React, {useContext} from 'react';
 
 export default function Layout({startingTheme, children}) {

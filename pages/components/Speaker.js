@@ -2,8 +2,8 @@ import SpeakerSessions from "./SpeakerSessions";
 import SpeakerInfo from "./SpeakerInfo";
 import SpeakerPicture from "./SpeakerPicture";
 import { useContext, memo } from "react";
-import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
-import { SpeakerProvider } from "../contexts/SpeakerContext";
+import { SpeakerFilterContext } from "../../contexts/SpeakerFilterContext";
+import { SpeakerProvider } from "../../contexts/SpeakerContext";
 import SpeakerDelete from './SpeakerDelete'
 
 const Speaker = memo(function Speaker({
