@@ -3,10 +3,10 @@ import SpeakerInfo from "./SpeakerInfo";
 import SpeakerPicture from "./SpeakerPicture";
 import { useContext, memo } from "react";
 import { SpeakerFilterContext } from "../../contexts/SpeakerFilterContext";
-import { SpeakerProvider } from "../../contexts/SpeakerContext";
-import SpeakerDelete from './SpeakerDelete'
+import SpeakerDelete from './SpeakerDelete';
+import ErrorBoundary from './ErrorBoundary';
 
-const Speaker = memo(function Speaker({
+const SpeakerNoErrorBoundary = memo(function Speaker({
   speaker,
   updateRecord,
   deleteRecord
@@ -24,6 +24,14 @@ const Speaker = memo(function Speaker({
       </div>
   );
 }, areEqualSpeaker);
+
+function Speaker(props){
+  return(
+    <ErrorBoundary>
+      <SpeakerNoErrorBoundary {...props}></SpeakerNoErrorBoundary>
+    </ErrorBoundary>
+  )
+}
 
 function areEqualSpeaker(prevProps, nextProps){
   return (prevProps.speaker.favorite == nextProps.speaker.favorite);

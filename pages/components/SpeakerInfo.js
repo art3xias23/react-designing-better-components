@@ -14,7 +14,7 @@ export default function SpeakerInfo() {
       <SpeakerFavorite />
       <div>
         <p className="card-description">
-          {bio}
+          {bio.substr(0,70)}
         </p>
         <div className="social d-flex flex-row mt-4">
           <div className="company">
