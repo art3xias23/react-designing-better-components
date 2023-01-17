@@ -2,7 +2,7 @@ import React, {createContext} from 'react';
 import useSpeakerFilter from '../hooks/useSpeakerFilter';
 
 
-const SpeakerFilterContext = createContext();
+const SpeakerFilterContext = createContext({startingShowSessions: () => {}, startingEventYears: () => []});
 
 function SpeakerFilterProvider({children, startingShowSessions, startingEventYears}){
 

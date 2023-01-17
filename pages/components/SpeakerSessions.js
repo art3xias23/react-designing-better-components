@@ -9,12 +9,9 @@ export default function SpeakerSessions() {
   const {eventYear} = useContext(SpeakerFilterContext);
 
   return (
-    sessions.filter((ss) => ss.eventYear == eventYear).map((session) => 
+    sessions ? sessions.filter((ss) => ss.eventYear == eventYear).map((session) => 
     <div className="sessionBox card h-250">
       <Session title={session.title} room={session.room.name} />
-     </div>)
-    // <div className="sesionBox card h-250">
-    //   <Session title={sessions[0].title} room={sessions[0].room.name}/>
-    // </div>
+     </div> ): <></> 
      );
   }

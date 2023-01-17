@@ -89,7 +89,7 @@ console.log(`Speakers count before delete: ${speakers.length}`)
       if(!speakers){
         res.status(404).send("Error: Request failed with status code 404");
       } else{
-        const newSpeakersArray = speakers.filter((rec) => rec.id != id);
+        const newSpeakersArray = speakers && speakers.filter((rec) => rec.id != id);
 console.log(`Speakers count before delete: ${speakers.length}`)
             writeFile(jsonFile, JSON.stringify({speakers: newSpeakersArray}, null, 2));
         res.setHeader("Content-Type", "application/json");

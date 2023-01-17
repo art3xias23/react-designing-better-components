@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-const SpeakerContext = createContext();
+const SpeakerContext = createContext({speaker: () => {}});
 
 function SpeakerProvider({children, speaker, updateRecord, insertRecord, deleteRecord}){
     return(

@@ -75,7 +75,7 @@ export default function useRequestRest() {
 function deleteRecord(record, doneCallBack) {
     const originalRecords = [...data];
 
-    const newRecords = originalRecords.filter((rc) => rc.id != record.id)
+    const newRecords = originalRecords && originalRecords.filter((rc) => rc.id != record.id)
     async function delayFunction() {
       try {
         setData(newRecords);

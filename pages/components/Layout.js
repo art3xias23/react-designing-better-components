@@ -1,13 +1,11 @@
-import { ThemeContext, ThemeProvider } from '../../contexts/ThemeContext';
+import { ThemeContext} from '../../contexts/ThemeContext';
 import React, {useContext} from 'react';
 
-export default function Layout({startingTheme, children}) {
+export default function Layout({children}) {
   return (
-    <ThemeProvider startingTheme={ startingTheme } >
       <LayoutNoThemeProvider>
         {children}
       </LayoutNoThemeProvider>
-    </ThemeProvider>
   );
 }
 

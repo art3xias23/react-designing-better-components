@@ -1,8 +1,11 @@
-import App from './components/App'
+import App from "./components/App";
+import { ThemeProvider } from "../contexts/ThemeContext";
 
 const IndexPage = () => {
   return (
-    <App/>
+    <ThemeProvider startingTheme="light">
+      <App />
+    </ThemeProvider>
   );
 };
 

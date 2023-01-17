@@ -66,7 +66,7 @@ function SpeakersToolbar() {
                   value={eventYear}
                   onChange={(event) => setEventYear(event.target.value)}
                 >
-                  {EVENT_YEARS.map((year) => (
+                  {EVENT_YEARS && EVENT_YEARS.map((year) => (
                     <option value={year} key={year}>
                       {year}
                     </option>
